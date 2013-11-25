@@ -1,7 +1,19 @@
 glib = {
   :namespace => :GLib,
   :prefix    => :g,
+  # :version   => 2.0,
+  
   :define => {
+    # :methods => {
+    #   :m_name => {
+    #     :symbol => ... ,
+    #     :alias  => ... ,
+    #     
+    #     :argument_types => [],
+    #     :return_type    => ...
+    #   }
+    # },  
+    
     :classes => {
       :Timeout => {
         :class_methods => {
