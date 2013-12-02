@@ -46,7 +46,7 @@ glib = {
           :sync => {
             :symbol => :spawn_sync
           },
-          
+        
           :async => {
             :symbol => :spawn_async
           },
@@ -80,6 +80,11 @@ def GLib.shell_parse_argv str
   return out
 end
 
+# Executes a command +cmd+
+#
+# @param cmd [String], the command to execute
+#
+# @return [Boolean] on success
 def GLib.spawn_command_line_async cmd
   error = FFI::MemoryPointer.new(:pointer)
   error.write_pointer FFI::Pointer::NULL
@@ -93,6 +98,11 @@ def GLib.spawn_command_line_async cmd
   return bool
 end
 
+# Executes a command
+#
+# @param cmd [String], the command to execute
+#
+# @return [Array]<Integer, String, String>, the exit status, stdout, stderr
 def GLib.spawn_command_line_sync cmd
   error = FFI::MemoryPointer.new(:pointer)
   error.write_pointer FFI::Pointer::NULL
@@ -129,10 +139,10 @@ end
 
 # Exectues a process asyncrously
 #
-# @param path String, the path to execute in
-# @param argv Array<String>, the argument vector
-# @param flags Integer, represents the GLib::SpawnFlags
-# @param b Proc, the block to call before execution
+# @param path [String], the path to execute in
+# @param argv [Array]<String>, the argument vector
+# @param flags [Integer], represents the GLib::SpawnFlags
+# @param b [Proc], the block to call before execution
 #
 # @return Integer, Child PID
 def GLib.spawn_async(path, argv, flags=0,&b)
@@ -155,12 +165,12 @@ end
 
 # Exectues a process syncrously
 #
-# @param path String, the path to execute in
-# @param argv Array<String>, the argument vector
-# @param flags Integer, represents the GLib::SpawnFlags
-# @param b Proc, the block to call before execution
+# @param path [String], the path to execute in
+# @param argv [Array]<String>, the argument vector
+# @param flags [Integer], represents the GLib::SpawnFlags
+# @param b [Proc], the block to call before execution
 #
-# @return Array of Integer (exit code), String (stdout), String (stderr)
+# @return [Array]<Integer, String, String>, Integer (exit code), String (stdout), String (stderr)
 def GLib.spawn_sync(path, argv, flags=0,&b)
 
   argvp, cb, error = spawn_helper(*argv,&b)
