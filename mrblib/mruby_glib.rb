@@ -145,7 +145,7 @@ end
 # @param b [Proc], the block to call before execution
 #
 # @return Integer, Child PID
-def GLib.spawn_async(path, argv, flags=0,&b)
+def GLib.spawn_async(argv, path="./", flags=0,&b)
 
   argvp, cb, error = spawn_helper(*argv,&b)
 
@@ -171,7 +171,7 @@ end
 # @param b [Proc], the block to call before execution
 #
 # @return [Array]<Integer, String, String>, Integer (exit code), String (stdout), String (stderr)
-def GLib.spawn_sync(path, argv, flags=0,&b)
+def GLib.spawn_sync(argv, path="./", flags=0,&b)
 
   argvp, cb, error = spawn_helper(*argv,&b)
 
