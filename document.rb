@@ -13,7 +13,7 @@ File.open "document.rb", "w" do |f|
   f.puts DATA.read
 end
 
-system "/home/ppibburr/git/mruby/bin/mruby document.rb"
+system "mruby document.rb"
 system "yard doc glib*.rb"
 
 # FileUtils.rm_f "../../doc"
