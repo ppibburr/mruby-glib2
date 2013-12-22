@@ -20,11 +20,7 @@ glib = {
       :Idle => {
         :class_methods => {
           :add => {
-            :symbol => :timeout_add
-          },
-          
-          :add_seconds => {
-            :symbol => :timeout_add_seconds
+            :symbol => :idle_add
           }
         }
       },

@@ -8,7 +8,7 @@ def at_exit!(loop)
 end
 
 PATH = "./glib_file_test.txt"
-loop = GLib::MainLoop.new(nil,false)
+loop = GLib::MainLoop.new(false)
 
 i = 0
 GLib::Timeout.add 200,500 do
