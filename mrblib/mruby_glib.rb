@@ -68,6 +68,17 @@ GLib::Lib.attach_function :g_spawn_command_line_async, [:string,:pointer], :bool
 GLib::Lib.attach_function :g_spawn_async, [:string, :pointer, :pointer, :SpawnFlags, :pointer, :pointer, :pointer, :pointer], :bool
 GLib::Lib.attach_function :g_spawn_sync, [:string, :pointer, :pointer, :SpawnFlags, :pointer, :pointer, :pointer, :pointer, :pointer, :pointer], :bool
 GLib::Lib.attach_function :g_shell_parse_argv, [:string, :pointer, :pointer, :pointer], :bool
+GLib::Lib.attach_function :g_mkdir, [:string, :int], :int
+GLib::Lib.attach_function :g_file_test, [:string, :int], :bool
+
+def GLib.mkdir path, mode
+  GLib::Lib.g_mkdir path,mode
+end
+
+def GLib.file_test path, test
+  GLib::Lib.g_file_test path,test
+end
+
 def GLib.shell_parse_argv str
   out = FFI::MemoryPointer.new(:pointer)
   
